@@ -1,0 +1,23 @@
+name: test-multi-deployment
+region: us-east-1
+yamlVersion: 2
+nextjs:
+    path: frontend
+    packageManager: npm
+    scripts:
+        deploy:
+            - npm install
+backend:
+    path: server
+    language:
+        name: js
+    functions:
+        - name: express
+          path: .
+          entry: app.mjs
+          type: httpServer
+    scripts:
+        deploy:
+            - npm install
+        local:
+            - npm install
